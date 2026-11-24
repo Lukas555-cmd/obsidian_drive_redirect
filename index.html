@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; style-src 'unsafe-inline'; script-src 'self'; base-uri 'none'; form-action 'none';"
+    />
+    <title>Obsidian Drive Vault Sync — Sign-in Redirect</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f6f7f9;
+        --card: #ffffff;
+        --text: #1b1f24;
+        --muted: #59636e;
+        --border: #d0d7de;
+        --accent: #6c47ff;
+        --accent-hover: #5835e8;
+        --accent-text: #ffffff;
+        --error-bg: #fff1f2;
+        --error-border: #fecdd3;
+        --error-text: #9f1239;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #111318;
+          --card: #1b1f27;
+          --text: #e6edf3;
+          --muted: #9aa4b2;
+          --border: #30363d;
+          --accent: #8b6eff;
+          --accent-hover: #9f87ff;
+          --accent-text: #0d1117;
+          --error-bg: #2c1218;
+          --error-border: #6e2230;
+          --error-text: #fda4af;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+      }
+
+      main {
+        width: 100%;
+        max-width: 28rem;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.75rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      }
+
+      h1 {
+        margin: 0 0 0.75rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      p {
+        margin: 0 0 1rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .error-box {
+        margin: 0 0 1.25rem;
+        padding: 0.75rem 0.9rem;
+        border-radius: 8px;
+        background: var(--error-bg);
+        border: 1px solid var(--error-border);
+        color: var(--error-text);
+        font-size: 0.875rem;
+        word-break: break-word;
+      }
+
+      .button {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        background: var(--accent);
+        color: var(--accent-text);
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+      }
+
+      .button:hover {
+        background: var(--accent-hover);
+      }
+
+      .button[hidden],
+      .error-box[hidden] {
+        display: none;
+      }
+
+      noscript p {
+        color: var(--error-text);
+      }
+    </style>
+  </head>
+  <body>
+    <main role="main" aria-live="polite">
+      <h1 id="status-title">Obsidian Drive Vault Sync</h1>
+      <p id="status-message">Completing Google Drive sign-in…</p>
+      <div id="error-box" class="error-box" role="alert" hidden></div>
+      <a id="open-obsidian" class="button" href="#" hidden>Open Obsidian</a>
+      <noscript>
+        <p>
+          JavaScript is required to forward the Google sign-in response back to
+          Obsidian. Please enable JavaScript and try again.
+        </p>
+      </noscript>
+    </main>
+    <script type="module" src="./redirect.js"></script>
+  </body>
+</html>
